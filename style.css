@@ -1,0 +1,54 @@
+/**
+ * Created by vachebaghdassarian on 7/31/17.
+ */
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    background: linear-gradient(180deg, #708090, #eaa75a, #708090);
+    font-family: "HelveticaNeue-UltraLight", Helvetica, Arial, sans-serif;
+    font-size: 2em;
+}
+
+div.container {
+    width: 50%;
+}
+
+div.panel {
+    margin-top: 25%;
+    background-color: transparent;
+    border: 0;
+}
+
+div.panel-body {
+    padding-bottom: 0;
+    background-color: #333333;
+    border: solid #333333 .5em;
+    box-shadow: 0 2em 4em;
+    border-radius: .5em;
+}
+
+div.panel-heading {
+    font-size: 5vw!important;
+    color: white!important;
+    text-align: right!important;
+    border: none!important;
+}
+
+.btn-default {
+    background-color: #e4e4e4;
+    border-color: #e4e4e4;
+}
+
+.btn-warning {
+    background-color: #ff8c00 ;
+    border-color: #ff8c00;
+}
+
+.btn-warning:hover {
+    background-color: #ffa500;
+    border-color: #ffa500;
+}

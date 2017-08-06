@@ -1,57 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Calculator v0.1</title>
-    <script src="https://code.jquery.com/jquery.min.js"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <title>My Calculator</title>
+    <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-    <link rel="stylesheet" href="style.css">‹git add ..
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="http://Learning-Fuze.github.io/calculator/calculator.js"></script>
 </head>
 <body>
 
-<div class="container">
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <div class="input-display panel-heading">0</div>
-                <div class="row">
-                    <button class="btn-danger btn-lg col-xs-3" id="clear">C</button>
-                    <button class="btn-success btn-lg col-xs-3" id="modulus">%</button>
-                    <button class="btn-info btn-lg col-xs-3" id="negative">+/-</button>
-                    <button class="operators btn-warning btn-lg col-xs-3">÷</button>
-                </div>
-                <div class="row">
-                    <button class="numbers btn-default btn-lg col-xs-3">7</button>
-                    <button class="numbers btn-default btn-lg col-xs-3">8</button>
-                    <button class="numbers btn-default btn-lg col-xs-3">9</button>
-                    <button class="numbers btn-warning btn-lg col-xs-3">x</button>
-                </div>
-                <div class="row">
-                    <button class="numbers btn-default btn-lg col-xs-3">4</button>
-                    <button class="numbers btn-default btn-lg col-xs-3">5</button>
-                    <button class="numbers btn-default btn-lg col-xs-3">6</button>
-                    <button class="operators btn-warning btn-lg col-xs-3">-</button>
-                </div>
-                <div class="row">
-                    <button class="numbers btn-default btn-lg col-xs-3">1</button>
-                    <button class="numbers btn-default btn-lg col-xs-3">2</button>
-                    <button class="numbers btn-default btn-lg col-xs-3">3</button>
-                    <button class="operators btn-warning btn-lg col-xs-3">+</button>
-                </div>
-                <div class="row">
-                    <button class="numbers btn-default btn-lg col-xs-6">0</button>
-                    <button class="btn-default btn-lg col-xs-3" id="decimal">.</button>
-                    <button class="btn-warning btn-lg col-xs-3" id="equals">=</button>
-                </div>
-            </div>
+<div class="clearfix" id="wrapper">
+    <div class="main">
+        <div id="screen">0</div>
+        <div class="row">
+            <button class="darker" id="clear">C</button>
+            <button class="darker" id="clear_all">AC</button>
+            <button class="darker" id="negative">+/-</button>
+            <button class="operators darker" id="divide">/</button>
+        </div>
+        <div class="row">
+            <button class="numbers">7</button>
+            <button class="numbers">8</button>
+            <button class="numbers">9</button>
+            <button class="operators darker" id="multiply">*</button>
+        </div>
+        <div class="row">
+            <button class="numbers">4</button>
+            <button class="numbers">5</button>
+            <button class="numbers">6</button>
+            <button class="operators darker" id="add">+</button>
+        </div>
+        <div class="row">
+            <button class="numbers">1</button>
+            <button class="numbers">2</button>
+            <button class="numbers">3</button>
+            <button class="operators darker" id="subtract">-</button>
+        </div>
+        <div class="row">
+            <button class="numbers btn-wide">0</button>
+            <button class="numbers">.</button>
+            <button class="blue" id="equals">=</button>
         </div>
     </div>
 </div>
 
 </body>
+<script>
 
+function callback(type, value, item) {
+    switch (value) {
+        case undefined:
+            $('#screen').html("");
+            break;
+        default:
+            $('#screen').html(value);
+            break;
+    }
+}
+
+var my_calculator = new calculator(callback);
+
+$(document).ready(function () {
+    $('button').on('click', function () {
+        var val = $(this).text();
+        switch (val) {
+            case 'AC':
+                my_calculator.allClear();
+                break;
+            default:
+                my_calculator.addItem($(this).text());
+                break;
+        }
+    });
+})
+
+</script>
 
 </html>

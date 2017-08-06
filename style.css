@@ -1,54 +1,74 @@
-/**
- * Created by vachebaghdassarian on 7/31/17.
- */
+html {
+    box-sizing: border-box;
+}
 
-html,
-body {
-    min-height: 100%;
+* {
+    box-sizing: inherit;
 }
 
 body {
-    background: linear-gradient(180deg, #708090, #eaa75a, #708090);
-    font-family: "HelveticaNeue-UltraLight", Helvetica, Arial, sans-serif;
-    font-size: 2em;
+    background: #222;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arimo', sans-serif;
 }
 
-div.container {
-    width: 50%;
+.clearfix {
+    display: block;
 }
 
-div.panel {
-    margin-top: 25%;
-    background-color: transparent;
-    border: 0;
-}
-
-div.panel-body {
-    padding-bottom: 0;
-    background-color: #333333;
-    border: solid #333333 .5em;
-    box-shadow: 0 2em 4em;
+#wrapper {
+    background: #222;
+    box-shadow: 0 1em 4em black;
+    width: 270px;
+    height: 408px;
+    padding: 0 8px 10px;
+    border: 1px solid black;
     border-radius: .5em;
+    margin: 20px auto;
 }
 
-div.panel-heading {
-    font-size: 5vw!important;
-    color: white!important;
-    text-align: right!important;
-    border: none!important;
+.main {
+    padding: 0;
+    width: 240px;
+    margin: auto;
 }
 
-.btn-default {
-    background-color: #e4e4e4;
-    border-color: #e4e4e4;
+#screen {
+    width: 240px;
+    height: 75px;
+    background: white;
+    margin: 15px 0 2px 0;
+    padding: 10px 10px;
+    border-radius: 4px;
+    font-size: 3em;
+    text-align: right;
 }
 
-.btn-warning {
-    background-color: #ff8c00 ;
-    border-color: #ff8c00;
+button {
+    color: #AAA;
+    float: left;
+    width: 60px;
+    font-size: 1.2em;
+    height: 60px;
+    background: #3e3e3e;
+    border: 1px solid shade;
+    border-radius: 3px;
 }
 
-.btn-warning:hover {
-    background-color: #ffa500;
-    border-color: #ffa500;
+button:hover {
+    background: #222;
+}
+button.blue {
+    background: #007191;
+    color: black;
+}
+button.darker {
+    color: #BBB;
+    background: #222;
+}
+
+.btn-wide {
+    height: 60px;
+    width: 120px;
 }

@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <link rel="stylesheet" href="style.css">
-    <script src="http://Learning-Fuze.github.io/calculator/calculator.js"></script>
+    <script src="script.js"></script>
 </head>
 <body>
 
@@ -47,35 +47,4 @@
 </div>
 
 </body>
-<script>
-
-function callback(type, value, item) {
-    switch (value) {
-        case undefined:
-            $('#screen').html("");
-            break;
-        default:
-            $('#screen').html(value);
-            break;
-    }
-}
-
-var my_calculator = new calculator(callback);
-
-$(document).ready(function () {
-    $('button').on('click', function () {
-        var val = $(this).text();
-        switch (val) {
-            case 'AC':
-                my_calculator.allClear();
-                break;
-            default:
-                my_calculator.addItem($(this).text());
-                break;
-        }
-    });
-})
-
-</script>
-
 </html>

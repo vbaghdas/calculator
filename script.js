@@ -1,7 +1,3 @@
-/**
- * Created by vachebaghdassarian on 7/31/17.
- */
-
 $(document).ready(applyClickHandlers);
 
 var userInput = [''];

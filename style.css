@@ -1,9 +1,9 @@
-html {
-    box-sizing: border-box;
-}
-
 * {
     box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
 }
 
 body {
@@ -13,36 +13,40 @@ body {
     font-family: 'Arimo', sans-serif;
 }
 
-.clearfix {
-    display: block;
-}
-
-#wrapper {
+.calc {
     background: #222;
     box-shadow: 0 1em 4em black;
     width: 270px;
-    height: 408px;
+    height: 434px;
     padding: 0 8px 10px;
     border: 1px solid black;
     border-radius: .5em;
     margin: 20px auto;
 }
 
-.main {
+.calcBody {
     padding: 0;
     width: 240px;
     margin: auto;
 }
 
-#screen {
+.display {
     width: 240px;
-    height: 75px;
+    height: 100px;
     background: white;
     margin: 15px 0 2px 0;
-    padding: 10px 10px;
+    padding: 10px 5px;
     border-radius: 4px;
-    font-size: 3em;
     text-align: right;
+}
+
+.displaySmall {
+    height: 30px;
+    font-size: 2em;
+}
+.displayLarge {
+    height: 70px;
+    font-size: 3em;
 }
 
 button {
@@ -59,16 +63,18 @@ button {
 button:hover {
     background: #222;
 }
-button.blue {
-    background: #007191;
-    color: black;
-}
-button.darker {
+
+button.operator {
     color: #BBB;
     background: #222;
 }
 
-.btn-wide {
+button.btn-wide {
     height: 60px;
     width: 120px;
+}
+
+button.blue {
+    background: #007191;
+    color: black;
 }

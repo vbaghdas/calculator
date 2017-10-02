@@ -7,41 +7,43 @@
     <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="new_calculator.js"></script>
 </head>
 <body>
 
-<div class="clearfix" id="wrapper">
-    <div class="main">
-        <div id="screen">0</div>
-        <div class="row">
-            <button class="darker" id="clear">C</button>
-            <button class="darker" id="clear_all">AC</button>
-            <button class="darker" id="negative">+/-</button>
-            <button class="operators darker" id="divide">/</button>
+<div class="calc">
+    <div class="calcBody">
+        <div class="display">
+            <div class="displaySmall"></div>
+            <div class="displayLarge"></div>
         </div>
         <div class="row">
-            <button class="numbers">7</button>
-            <button class="numbers">8</button>
-            <button class="numbers">9</button>
-            <button class="operators darker" id="multiply">*</button>
+            <button class="clear btn-wide">C</button>
+            <button class="clearEntry">CE</button>
+            <button class="operator" value="/">/</button>
         </div>
         <div class="row">
-            <button class="numbers">4</button>
-            <button class="numbers">5</button>
-            <button class="numbers">6</button>
-            <button class="operators darker" id="add">+</button>
+            <button class="number" value="7">7</button>
+            <button class="number" value="8">8</button>
+            <button class="number" value="9">9</button>
+            <button class="operator" value="x">x</button>
         </div>
         <div class="row">
-            <button class="numbers">1</button>
-            <button class="numbers">2</button>
-            <button class="numbers">3</button>
-            <button class="operators darker" id="subtract">-</button>
+            <button class="number" value="4">4</button>
+            <button class="number" value="5">5</button>
+            <button class="number" value="6">6</button>
+            <button class="operator" value="+">+</button>
         </div>
         <div class="row">
-            <button class="numbers btn-wide">0</button>
-            <button class="numbers">.</button>
-            <button class="blue" id="equals">=</button>
+            <button class="number" value="1">1</button>
+            <button class="number" value="2">2</button>
+            <button class="number" value="3">3</button>
+            <button class="operator" value="-">-</button>
+        </div>
+        <div class="row">
+            <button class="number btn-wide" value="0">0</button>
+            <button class="number" value=".">.</button>
+            <button class="calculate blue" value="=">=</button>
         </div>
     </div>
 </div>

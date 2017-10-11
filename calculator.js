@@ -1,7 +1,8 @@
 $(document).ready(applyClickHandlers)
 
+//Apply click handlers on page load
 function applyClickHandlers() {
-    $('.calc').on('keydown', keydown);
+    $('body').on('keydown', keydown);
     $('.calc').on('click', '.number', number);
     $('.calc').on('click', '.operator', operator);
     $('.calc').on('click', '.calculate', calculate);
@@ -9,8 +10,10 @@ function applyClickHandlers() {
     $('.calc').on('click', '.clear', clear);
 }
 
+//Global array to store the equation
 var calculation = [];
 
+//Math function to handle all calculations
 function doMath(array) {
     var result = 0;
     var item = 0;
@@ -25,7 +28,7 @@ function doMath(array) {
                 case '/':
                     item = array[index-1] / array[index+1];
                     index--;
-                    array.splice(i, 3, item);
+                    array.splice(index, 3, item);
                     break;
                 default:
                     break;
@@ -51,21 +54,28 @@ function doMath(array) {
         }
     }
     result = array[0];
-    return result;
+    // If result is equal to Infinity (i.e. 1/0), display error
+    return result === Infinity ? 'Error' : result;
 }
 
+//Handles the values displayed on the DOM
 function number() {
-    $('.displayLarge').append($(this).val());
+    if($('.displayLarge').text()==0) { $('.displayLarge').text('') }
+    //Checks for repeating decimals
+    if(/\./.test($('.displayLarge').text()) && /\./.test($(this).val()) ) {
+        return;
+    } else {
+        $('.displayLarge').append($(this).val()); 
+    }
 }
 
+//Pushes the number and operator to the calculation array and displays them on the DOM
 function operator() {
     if ($('.displayLarge').text() === "") {
         var currentOperator = $(this).val();
         calculation.pop();
         calculation.push(currentOperator);
-        var currentInput = $('.displaySmall').text();
-        var previousInput = currentInput.substr(0, (currentInput.length - 2));
-        $('.displaySmall').text(previousInput).append(currentOperator);
+        $('.displaySmall').append(currentOperator);
     } else {
         var text = parseFloat($('.displayLarge').text());
         currentOperator = $(this).val();
@@ -75,6 +85,7 @@ function operator() {
     }
 }
 
+//Handles the equal button, calculates the math, and displays the result on the DOM
 function calculate() {
     var result = 0;
     if ($('.displayLarge').text() === "") {
@@ -95,28 +106,32 @@ function calculate() {
     }
 }
 
+//Delete a single entry on the DOM
 function clearEntry() {
     var currentInput = $('.displayLarge').text();
     var previousInput = currentInput.substr(0, (currentInput.length - 1));
     $('.displayLarge').text(previousInput);
 }
 
+//Delete the calculation from the DOM and reset the equation to an emptry array
 function clear() {
     $('.displaySmall').text('');
-    $('.displayLarge').text('');
+    $('.displayLarge').text(0);
     calculation = [];
 }
 
+//Handle keys pressed on the keyboard and displays them on the DOM
 function keydown() {
-    var clicked = event.which || event.keyCode;
-    if (clicked === 46 || clicked === 110 || clicked === 190) {
-        $('.displaySmall').append(String.fromCharCode(46));
-    } else if (clicked === 13) {
-        calculateClicked();
-    } else if (clicked === 8) {
+    var input = event.which || event.keyCode;
+    if (input === 46 || input === 110 || input === 190) {
+        $('.displayLarge').append(String.fromCharCode(46));
+    } else if (input === 13) {
+        calculate();
+    } else if (input === 8) {
         clear();
     }
-    else if (clicked >= 48 && clicked <= 57) {
-        $('.displayLarge').append(String.fromCharCode(clicked));
+    else if (input >= 48 && input <= 57) {
+        if($('.displayLarge').text()==0) { $('.displayLarge').text('') }
+        $('.displayLarge').append(String.fromCharCode(input));
     }
 }

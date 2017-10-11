@@ -16,24 +16,24 @@ body {
 .calc {
     background: #222;
     box-shadow: 0 1em 4em black;
-    width: 385px;
-    height: 628px;
+    width: 270px;
+    height: 434px;
     padding: 0 8px 10px;
     border: 1px solid black;
     border-radius: .5em;
-    margin: 30px auto;
+    margin: 20px auto;
 }
 
 .calcBody {
     padding: 0;
-    width: 360px;
+    width: 240px;
     margin: auto;
 }
 
 .display {
-    width: 360px;
-    height: 172px;
-    background: #DBDBDB;
+    width: 240px;
+    height: 100px;
+    background: white;
     margin: 15px 0 2px 0;
     padding: 10px 5px;
     border-radius: 4px;
@@ -41,26 +41,20 @@ body {
 }
 
 .displaySmall {
-    height: 55px;
+    height: 30px;
     font-size: 2em;
-    letter-spacing: -1px;
-    overflow: scroll;
-    margin-top: 25px;
 }
-
 .displayLarge {
-    height: 80px;
-    font-size: 4em;
-    letter-spacing: -3px;
-    overflow: scroll;
+    height: 70px;
+    font-size: 3em;
 }
 
 button {
     color: #AAA;
     float: left;
-    width: 90px;
-    font-size: 1.5em;
-    height: 85px;
+    width: 60px;
+    font-size: 1.2em;
+    height: 60px;
     background: #3e3e3e;
     border: 1px solid shade;
     border-radius: 3px;
@@ -76,8 +70,8 @@ button.operator {
 }
 
 button.btn-wide {
-    height: 85px;
-    width: 180px;
+    height: 60px;
+    width: 120px;
 }
 
 button.blue {

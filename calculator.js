@@ -3,11 +3,11 @@ $(document).ready(applyClickHandlers)
 //Apply click handlers on page load
 function applyClickHandlers() {
     $('body').on('keydown', keydown);
-    $('.calc').on('click', '.number', number);
-    $('.calc').on('click', '.operator', operator);
-    $('.calc').on('click', '.calculate', calculate);
-    $('.calc').on('click', '.clearEntry', clearEntry);
-    $('.calc').on('click', '.clear', clear);
+    $('.calculator').on('click', '.number', number);
+    $('.calculator').on('click', '.operator', operator);
+    $('.calculator').on('click', '.calculate', calculate);
+    $('.calculator').on('click', '.clearEntry', clearEntry);
+    $('.calculator').on('click', '.clear', clear);
 }
 
 //Global array to store the equation

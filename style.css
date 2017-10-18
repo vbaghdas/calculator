@@ -13,7 +13,7 @@ body {
     font-family: 'Arimo', sans-serif;
 }
 
-.calc {
+.container {
     background: #222;
     box-shadow: 0 1em 4em black;
     width: 385px;
@@ -24,7 +24,7 @@ body {
     margin: 30px auto;
 }
 
-.calcBody {
+.calculator {
     padding: 0;
     width: 360px;
     margin: auto;

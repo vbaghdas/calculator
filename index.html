@@ -8,8 +8,14 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
 
-    <!-- jQuery 3.1.0 -->
-    <script src="jquery/jquery-3.1.0.js"></script>
+    <!-- Bootstrap 3.3.7 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery 3.2.1 JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Bootstrap 3.3.7 JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- Calculator Script -->
     <script src="js/calculator.js"></script>
@@ -27,52 +33,52 @@
 
         <!-- Display -->
         <div class="display">
-            <div class="displaySmall"></div>
-            <div class="displayLarge">0</div>
+            <div class="displaySmall col-xs-12"></div>
+            <div class="displayLarge col-xs-12">0</div>
         </div>
 
         <!-- Clear, Clear Entry, and Division Operator -->
         <div class="row">
-            <button class="clear btn-wide">C</button>
-            <button class="clearEntry">CE</button>
-            <button class="operator" value="/">/</button>
+            <button class="clear btn-wide col-xs-6">C</button>
+            <button class="clearEntry col-xs-3">CE</button>
+            <button class="operator col-xs-3" value="/">/</button>
         </div>
 
         <!-- Numbers 7,8,9 and Multiplication Operator -->
         <div class="row">
-            <button class="number" value="7">7</button>
-            <button class="number" value="8">8</button>
-            <button class="number" value="9">9</button>
-            <button class="operator" value="x">x</button>
+            <button class="number col-xs-3" value="7">7</button>
+            <button class="number col-xs-3" value="8">8</button>
+            <button class="number col-xs-3" value="9">9</button>
+            <button class="operator col-xs-3" value="x">x</button>
         </div>
 
         <!-- Numbers 4,5,6 and Addition Operator -->
         <div class="row">
-            <button class="number" value="4">4</button>
-            <button class="number" value="5">5</button>
-            <button class="number" value="6">6</button>
-            <button class="operator" value="+">+</button>
+            <button class="number col-xs-3" value="4">4</button>
+            <button class="number col-xs-3" value="5">5</button>
+            <button class="number col-xs-3" value="6">6</button>
+            <button class="operator col-xs-3" value="+">+</button>
         </div>
 
         <!-- Numbers 1,2,3 and Subtraction Operator -->
         <div class="row">
-            <button class="number" value="1">1</button>
-            <button class="number" value="2">2</button>
-            <button class="number" value="3">3</button>
-            <button class="operator" value="-">-</button>
+            <button class="number col-xs-3" value="1">1</button>
+            <button class="number col-xs-3" value="2">2</button>
+            <button class="number col-xs-3" value="3">3</button>
+            <button class="operator col-xs-3" value="-">-</button>
         </div>
 
         <!-- Number 0, Decimal, and Calculate -->
         <div class="row">
-            <button class="number btn-wide" value="0">0</button>
-            <button class="number" value=".">.</button>
-            <button class="calculate blue" value="=">=</button>
+            <button class="number btn-wide col-xs-6" value="0">0</button>
+            <button class="number col-xs-3" value=".">.</button>
+            <button class="calculate blue col-xs-3" value="=">=</button>
         </div>
 
     </div>
     <!-- End of Calculator Body -->
 </div>
-<!-- End of App Container -->
+<!-- End App Container -->
 
 </body>
 </html>

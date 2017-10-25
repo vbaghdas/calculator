@@ -52,6 +52,9 @@ button {
 button:hover {
     background: #222;
 }
+button:active {
+    top: 1px;
+}
 button.operator {
     color: #BBB;
     background: #222;

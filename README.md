@@ -1,29 +1,32 @@
 # Calculator
 
-## Version 1
+## HTML5, CSS3, JavaScript, jQuery
+
 #### Description
-Version 1 takes the layout and basic button click functionality built in the 2 previous versions and then ties in the calculation functionality. This version works toward more OOP understandings
-by taking the inputs from the calculator and inserting them into objects and then those objects into an array.
 
+This calculator was developed using bootstrap for a mobile responsive experience.
+For every button(number or operator) pressed, the value is appended to an equation inside of an array and displayed on the calculator screen using jQuery which is later used in a math function using JS to generate the output. The application also has keyboard support through your keyboard numpad.
 
-- <a href="https://github.com/Learning-Fuze/calculator/tree/v1#getting-started">Getting Started</a>
-- <a href="https://github.com/Learning-Fuze/calculator/tree/v1#scope">View Scope</a>
+The calculator is capable of handling a multiple set of operations including but not limited to:
 
-## Version 0.5
-#### Description
-Version 0.5 adds in user functionality without needing to write the underneath logic of a calculator. With the introduction
-to the calculator object the user can interact with the object to receive the values after calculation has been completed.
+##### BASIC OPERATIONS
+addition	1 + 2 =	3	
+multiplication	1 * 2 =	2	
+division	1 / 2 =	0.5	
+subtraction	1 - 2 = -1
 
+##### COMPREHENSIVE OPERATIONS			
+successive operation	1 + 1 + 2 =	4	
+decimals	1 . 1 + 1 . 1 =	2.2	
+multiple decimals	1 ... 1 + 1 ... 1 =	2.2	
+multiple operation keys	1 ++++ 2 =	3	
+changing operation keys	1 + - * 2 =	2	
+division by zero	1 / 0 = "Error"	
 
-- <a href="https://github.com/Learning-Fuze/calculator/tree/v0.5#getting-started">Getting Started</a>
-- <a href="https://github.com/Learning-Fuze/calculator/tree/v0.5#scope">View Scope</a>
+##### ADVANCED OPERATIONS			
+premature operation	++++ 1 * 3 = 3		
+missing operation	3 =	3	
+missing operands	= = = =	0	
 
-## Version 0.1
-#### Description
-Version 0.1 is the starting point of the Calculator Project. You must create the base structure and styles, using bootstrap as you deem necessary. For this version we are looking to see that you
-understand how to create the basic structure of a web application, style it, and make it reasonably responsive.  No functionality will be encoded with this version.
-
-- <a href="https://github.com/Learning-Fuze/calculator/tree/v0.1#getting-started">Getting Started</a>
-- <a href="https://github.com/Learning-Fuze/calculator/tree/v0.1#scope">View Scope</a>
-- <a href="https://github.com/Learning-Fuze/calculator/tree/v0.1#design">View Design</a>
-- <a href="https://github.com/Learning-Fuze/calculator/tree/v0.1#assignments---aka-criteria-for-success-on-this-version-of-the-project">View Assignments</a>
+##### EXTRA OPERATIONS			
+func. calculator: order of ops	1 + 3 / 4 + 10 * 2	21.75

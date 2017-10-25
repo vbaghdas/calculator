@@ -1,6 +1,6 @@
-# Calculator
+# CALCULATOR
 
-## HTML5, CSS3, JavaScript, jQuery
+## Technologies: HTML5, CSS3, JavaScript, jQuery
 
 #### Description
 
@@ -10,23 +10,26 @@ For every button(number or operator) pressed, the value is appended to an equati
 The calculator is capable of handling a multiple set of operations including but not limited to:
 
 ##### BASIC OPERATIONS
-addition	1 + 2 =	3	
-multiplication	1 * 2 =	2	
-division	1 / 2 =	0.5	
-subtraction	1 - 2 = -1
++ addition	1 + 2 =	3	
++ multiplication	1 * 2 =	2	
++ division	1 / 2 =	0.5	
++ subtraction	1 - 2 = -1
 
 ##### COMPREHENSIVE OPERATIONS			
-successive operation	1 + 1 + 2 =	4	
-decimals	1 . 1 + 1 . 1 =	2.2	
-multiple decimals	1 ... 1 + 1 ... 1 =	2.2	
-multiple operation keys	1 ++++ 2 =	3	
-changing operation keys	1 + - * 2 =	2	
-division by zero	1 / 0 = "Error"	
++ successive operation	1 + 1 + 2 =	4	
++ decimals	1 . 1 + 1 . 1 =	2.2	
++ multiple decimals	1 ... 1 + 1 ... 1 =	2.2	
++ multiple operation keys	1 ++++ 2 =	3	
++ changing operation keys	1 + - * 2 =	2	
++ division by zero	1 / 0 = "Error"	
 
 ##### ADVANCED OPERATIONS			
-premature operation	++++ 1 * 3 = 3		
-missing operation	3 =	3	
-missing operands	= = = =	0	
++ premature operation	++++ 1 * 3 = 3		
++ missing operation	3 =	3	
++ missing operands	= = = =	0	
 
 ##### EXTRA OPERATIONS			
-func. calculator: order of ops	1 + 3 / 4 + 10 * 2	21.75
++ func. calculator: order of ops	1 + 3 / 4 + 10 * 2	21.75
+
+IMAGE: 
+![alt text](http://dev.vachebaghdassarian.com/images/portfolio/calculator.png "Calculator")

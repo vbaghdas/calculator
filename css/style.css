@@ -44,9 +44,9 @@ body {
 button {
     color: #AAA;
     font-size: 1.5em;
-    height: 10vh;
+    height: 70px;
     background: #3e3e3e;
-    border: 1px solid shade;
+    border: 1px solid #111;
     border-radius: 3px;
 }
 button:hover {
@@ -65,5 +65,8 @@ button.blue {
 @media all and (max-width: 768px) {
     .calculator {
         width: 100%;
+    }
+    button {
+        height: 11vh;
     }
 }

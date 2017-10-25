@@ -31,5 +31,5 @@ The calculator is capable of handling a multiple set of operations including but
 ##### EXTRA OPERATIONS			
 + func. calculator: order of ops	1 + 3 / 4 + 10 * 2	21.75
 
-IMAGE: 
+##### DEMO IMAGE: 
 ![alt text](http://dev.vachebaghdassarian.com/images/portfolio/calculator.png "Calculator")

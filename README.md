@@ -20,11 +20,14 @@ The calculator is capable of handling a multiple set of operations including but
 + decimals	1 . 1 + 1 . 1 =	2.2	
 + multiple decimals	1 ... 1 + 1 ... 1 =	2.2	
 + multiple operation keys	1 ++++ 2 =	3	
-+ changing operation keys	1 + - * 2 =	2	
++ changing operation keys	1 + - * 2 =	2
++ operation rollover	1 + 1 + = + = 8
++ operation repeat 1 + 1 = = = 4		
 + division by zero	1 / 0 = "Error"	
 
 ##### ADVANCED OPERATIONS			
 + premature operation	++++ 1 * 3 = 3		
++ partial operand	3 *	= 9
 + missing operation	3 =	3	
 + missing operands	= = = =	0	
 

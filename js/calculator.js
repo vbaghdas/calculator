@@ -67,7 +67,7 @@ function doMath(array) {
     }
     result = array[0];
     // If result is equal to Infinity (i.e. 1/0), display error
-    return result === Infinity ? 'Error' : result;
+    return result == Infinity ? 'Error' : result;
 }
 
 // Handle the value displayed on the DOM
@@ -85,11 +85,14 @@ function handleNumber() {
 // Push the number and operator to the calculation array and display them on the DOM
 function handleOperator() {
     operator = $(this).val();
-    if ($('.displayLarge').text() === "") {
+    if ($('.displayLarge').text() === '') {
         calculation.pop();
         calculation.push(operator);
         $('.displaySmall').append(operator);
     } else {
+        if ($('.displayLarge').text()==0 || $('.displayLarge').text()=='Ready') { 
+            return;
+        }
         var text = parseFloat($('.displayLarge').text());
         $('.displaySmall').append(text + " " + operator + " ");
         $('.displayLarge').text('');
@@ -99,17 +102,18 @@ function handleOperator() {
 
 // Handle the calculation button, calculate the equation, and display the result on the DOM
 function handleCalculate() {
-    if ($('.displayLarge').text() === "") {
-        if (calculation.length === 2) { operationRollOver() }
+    if ($('.displayLarge').text() === '') {
+        if (calculation.length == 2) { operationRollOver() }
         if (calculation.length !== 0) { comprehensiveOperation() }
     } else {
         var currentInput = parseFloat($('.displayLarge').text());
         if (calculation.length == 0){
-            if ( $('.displayLarge').length > 0 && isNaN(num2) ){
+            if ($('.displayLarge').length > 0 && isNaN(num2)){
                 partialOperand(currentInput);
             }
-            if (currentInput === 0 || isNaN(currentInput)) {
+            if (currentInput == 0 || isNaN(currentInput)) {
                 $('.displayLarge').text('Ready');
+                return;
             }
             operationRepeat();
             return;
@@ -158,6 +162,9 @@ function exclusiveOperation(currentInput) {
 
 // Delete a single entry on the DOM
 function clearEntry() {
+    if ($('.displayLarge').text()==0 || $('.displayLarge').text()=='Ready') { 
+        return;
+    }
     var currentInput = $('.displayLarge').text();
     var previousInput = currentInput.substr(0, (currentInput.length - 1));
     $('.displayLarge').text(previousInput);
@@ -178,14 +185,13 @@ function clear() {
 // Handle keys pressed on the keyboard and display them on the DOM
 function keydown() {
     var input = event.which || event.keyCode;
-    if (input === 46 || input === 110 || input === 190) {
+    if (input == 46 || input == 110 || input == 190) {
         $('.displayLarge').append(String.fromCharCode(46));
-    } else if (input === 13) {
+    } else if (input == 13) {
         calculate();
-    } else if (input === 8) {
+    } else if (input == 8) {
         clear();
-    }
-    else if (input >= 48 && input <= 57) {
+    } else if (input >= 48 && input <= 57) {
         if ( $('.displayLarge').text()==0) { $('.displayLarge').text('') }
         $('.displayLarge').append(String.fromCharCode(input));
     }

@@ -72,10 +72,7 @@ button.blue {
 
 /* Mobile Respnsive */
 @media all and (max-width: 768px) {
-    .calculator {
-        width: 100%;
-    }
     button {
-        height: 11vh;
+        height: 10vh;
     }
 }

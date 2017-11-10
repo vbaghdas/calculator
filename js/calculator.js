@@ -1,4 +1,4 @@
-$(document).ready(applyClickHandlers)
+$(document).ready(applyClickHandlers);
 
 //Apply click handlers on page load
 function applyClickHandlers() {
@@ -11,49 +11,48 @@ function applyClickHandlers() {
 }
 
 //Global variables
-var firstOperand = null;
-var lastOperand = null;
-var currentOperator = null;
+var num1 = null;
+var num2 = null;
+var operand = null;
+var operator = null;
 var calculation = [];
 var result = 0;
 
 //Math function to handle all calculations
 function doMath(array) {
     var item = 0;
-    for (var index = 0; index < array.length; index++) {
-        firstOperand = array[index-1];
-        lastOperand = array[index+1];
-        if (isNaN(array[index])) {
-            switch(array[index]) {
+    num1 = array[0];
+    num2 = array[2];
+    for (var i = 0; i < array.length; i++) {
+        if (isNaN(array[i])) {
+            switch(array[i]) {
                 case 'x':
-                    item = firstOperand * lastOperand;
-                    index--;
-                    array.splice(index, 3, item);
+                    item = array[i-1] * array[i+1];
+                    i--;
+                    array.splice(i, 3, item);
                     break;
                 case '/':
-                    item = firstOperand / lastOperand;
-                    index--;
-                    array.splice(index, 3, item);
+                    item = array[i-1] / array[i+1];
+                    i--;
+                    array.splice(i, 3, item);
                     break;
                 default:
                     break;
             }
         }
     }
-    for (var index = 0; index < array.length; index++) {
-        firstOperand = array[index-1];
-        lastOperand = array[index+1];
-        if (isNaN(array[index])) {
-            switch(array[index]) {
+    for (var i = 0; i < array.length; i++) {
+        if (isNaN(array[i])) {
+            switch(array[i]) {
                 case '-':
-                    item = firstOperand - lastOperand;
-                    index--;
-                    array.splice(index, 3, item);
+                    item = array[i-1] - array[i+1];
+                    i--;
+                    array.splice(i, 3, item);
                     break;
                 case '+':
-                    item = firstOperand + lastOperand;
-                    index--;
-                    array.splice(index, 3, item);
+                    item = array[i-1] + array[i+1];
+                    i--;
+                    array.splice(i, 3, item);
                     break;
                 default:
                     break;
@@ -67,6 +66,7 @@ function doMath(array) {
 
 //Handle the value displayed on the DOM
 function handleNumber() {
+    operand = parseFloat($(this).val());
     if ( $('.displayLarge').text()==0) { $('.displayLarge').text('') }
     //Check for repeating decimals
     if (/\./.test($('.displayLarge').text()) && /\./.test($(this).val()) ) {
@@ -78,28 +78,28 @@ function handleNumber() {
 
 //Pushe the number and operator to the calculation array and display them on the DOM
 function handleOperator() {
-    currentOperator = $(this).val();
+    operator = $(this).val();
     if ($('.displayLarge').text() === "") {
         calculation.pop();
-        calculation.push(currentOperator);
-        $('.displaySmall').append(currentOperator);
+        calculation.push(operator);
+        $('.displaySmall').append(operator);
     } else {
         var text = parseFloat($('.displayLarge').text());
-        $('.displaySmall').append(text + " " + currentOperator + " ");
+        $('.displaySmall').append(text + " " + operator + " ");
         $('.displayLarge').text('');
-        calculation.push(text, currentOperator);
+        calculation.push(text, operator);
     }
 }
 
-//Handle the equal button, calculate the equation, and displays the result on the DOM
+//Handle the equal button, calculate the equation, and display the result on the DOM
 function handleCalculate() {
     if ($('.displayLarge').text() === "") {
-        if (isNaN(calculation[1])){
+        if (calculation.length === 2){
             //Operation Rollover
             if (calculation.length === 4) {
-                var operand = calculation.pop();
+                var lastNum = calculation.pop();
                 result = doMath(calculation);
-                calculation.push(operand, result);
+                calculation.push(lastNum, result);
                 var finalResult = doMath(calculation);
                 calculation = [];
                 $('.displaySmall').text('');
@@ -122,8 +122,15 @@ function handleCalculate() {
     } else {
         var text = parseFloat($('.displayLarge').text());
         //Operation Repeat
-        if ($('.displaySmall').text() === ''){
-            calculation.push(result, currentOperator, lastOperand);
+        if (calculation.length == 0){
+            //Partial Operand - implicit return
+            if ( $('.displayLarge').length > 0 && isNaN(num2) ){
+                calculation.push(operand, operator, text);
+                result = doMath(calculation);
+                $('.displaySmall').text('');
+                $('.displayLarge').text(result);
+            }
+            calculation.push(result, operator, num2);
             result = doMath(calculation);
             calculation = [];
             $('.displaySmall').text('');
@@ -150,6 +157,8 @@ function clear() {
     $('.displaySmall').text('');
     $('.displayLarge').text(0);
     calculation = [];
+    operator = null;
+    result = 0;
 }
 
 //Handle keys pressed on the keyboard and display them on the DOM

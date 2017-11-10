@@ -193,7 +193,7 @@ function keydown() {
     } else if (input == 8) {
         clear();
     } else if (input >= 48 && input <= 57) {
-        if ( $('.displayLarge').text()==0) { $('.displayLarge').text('') }
+        if ($('.displayLarge').text()==0) { $('.displayLarge').text('')}
         $('.displayLarge').append(String.fromCharCode(input));
     }
 }

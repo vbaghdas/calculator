@@ -2,23 +2,29 @@ $(document).ready(applyClickHandlers);
 
 //Apply click handlers on page load
 function applyClickHandlers() {
-    $('body').on('keydown', keydown);
     $('.calculator').on('click', '.number', handleNumber);
     $('.calculator').on('click', '.operator', handleOperator);
     $('.calculator').on('click', '.calculate', handleCalculate);
     $('.calculator').on('click', '.clearEntry', clearEntry);
     $('.calculator').on('click', '.clear', clear);
+    $('body').on('keydown', keydown);
 }
 
-//Global variables
+// Display Result
+function displayResult(result) {
+    $('.displaySmall').text('');
+    $('.displayLarge').text(result);
+}
+
+// Global variables
 var num1 = null;
 var num2 = null;
 var operand = null;
 var operator = null;
 var calculation = [];
-var result = 0;
+var result = null;
 
-//Math function to handle all calculations
+// Math Function
 function doMath(array) {
     var item = 0;
     num1 = array[0];
@@ -60,11 +66,11 @@ function doMath(array) {
         }
     }
     result = array[0];
-    //If result is equal to Infinity (i.e. 1/0), display error
+    // If result is equal to Infinity (i.e. 1/0), display error
     return result === Infinity ? 'Error' : result;
 }
 
-//Handle the value displayed on the DOM
+// Handle the value displayed on the DOM
 function handleNumber() {
     operand = parseFloat($(this).val());
     if ( $('.displayLarge').text()==0) { $('.displayLarge').text('') }
@@ -76,7 +82,7 @@ function handleNumber() {
     }
 }
 
-//Pushe the number and operator to the calculation array and display them on the DOM
+// Push the number and operator to the calculation array and display them on the DOM
 function handleOperator() {
     operator = $(this).val();
     if ($('.displayLarge').text() === "") {
@@ -91,77 +97,85 @@ function handleOperator() {
     }
 }
 
-//Handle the equal button, calculate the equation, and display the result on the DOM
+// Handle the calculation button, calculate the equation, and display the result on the DOM
 function handleCalculate() {
     if ($('.displayLarge').text() === "") {
-        if (calculation.length === 2){
-            //Operation Rollover
-            if (calculation.length === 4) {
-                var lastNum = calculation.pop();
-                result = doMath(calculation);
-                calculation.push(lastNum, result);
-                var finalResult = doMath(calculation);
-                calculation = [];
-                $('.displaySmall').text('');
-                $('.displayLarge').text(finalResult);
-                return;
-            }
-            //Partial Operand
-            calculation.push(calculation[0]);
-            result = doMath(calculation);
-            $('.displaySmall').text('');
-            $('.displayLarge').text(result);
-        }
-        if (calculation.length !== 0) {
-            calculation.pop();
-            result = doMath(calculation);
-            calculation = [];
-            $('.displaySmall').text('');
-            $('.displayLarge').text(result);
-        }
+        if (calculation.length === 2) { operationRollOver() }
+        if (calculation.length !== 0) { comprehensiveOperation() }
     } else {
-        var text = parseFloat($('.displayLarge').text());
-        //Operation Repeat
+        var currentInput = parseFloat($('.displayLarge').text());
         if (calculation.length == 0){
-            //Partial Operand - implicit return
             if ( $('.displayLarge').length > 0 && isNaN(num2) ){
-                calculation.push(operand, operator, text);
-                result = doMath(calculation);
-                $('.displaySmall').text('');
-                $('.displayLarge').text(result);
+                partialOperand(currentInput);
             }
-            calculation.push(result, operator, num2);
-            result = doMath(calculation);
-            calculation = [];
-            $('.displaySmall').text('');
-            $('.displayLarge').text(result);
+            if (currentInput === 0 || isNaN(currentInput)) {
+                $('.displayLarge').text('Ready');
+            }
+            operationRepeat();
             return;
         }
-        calculation.push(text);
-        result = doMath(calculation);
-        calculation = [];
-        $('.displaySmall').text('');
-        $('.displayLarge').text(result);
+        exclusiveOperation(currentInput);
     }
 }
 
-//Delete a single entry on the DOM
+// Operation Rollover input: 1 + 1 + = + = output: 8
+function operationRollOver() {
+    calculation.push(calculation[0]);
+    result = doMath(calculation);
+    displayResult(result);
+}
+
+// Comprehensive Operation input: 1 + 3 / 4 + 10 * 2 = output: 21.75
+function comprehensiveOperation() {
+    calculation.pop();
+    result = doMath(calculation);
+    calculation = [];
+    displayResult(result);
+}
+
+// Partial Operand input: 3 * = output: 9
+function partialOperand(currentInput) {
+    calculation.push(operand, operator, currentInput);
+    result = doMath(calculation);
+    displayResult(result);
+}
+
+// Operation Repeat input: 1 + 1 = = = output: 4
+function operationRepeat() {
+    calculation.push(result, operator, num2);
+    result = doMath(calculation);
+    calculation = [];
+    displayResult(result);
+}
+
+// Exclusive Operation
+function exclusiveOperation(currentInput) {
+    calculation.push(currentInput);
+    result = doMath(calculation);
+    calculation = [];
+    displayResult(result);
+}
+
+// Delete a single entry on the DOM
 function clearEntry() {
     var currentInput = $('.displayLarge').text();
     var previousInput = currentInput.substr(0, (currentInput.length - 1));
     $('.displayLarge').text(previousInput);
 }
 
-//Delete the calculation from the DOM and reset the equation to an emptry array
+// Delete the calculation from the DOM and reset the equation to an emptry array
 function clear() {
     $('.displaySmall').text('');
     $('.displayLarge').text(0);
-    calculation = [];
+    num1 = null;
+    num2 = null;
+    operand = null;
     operator = null;
-    result = 0;
+    calculation = [];
+    result = null;
 }
 
-//Handle keys pressed on the keyboard and display them on the DOM
+// Handle keys pressed on the keyboard and display them on the DOM
 function keydown() {
     var input = event.which || event.keyCode;
     if (input === 46 || input === 110 || input === 190) {

@@ -146,6 +146,7 @@ function partialOperand(currentInput) {
 
 // Operation Repeat input: 1 + 1 = = = output: 4
 function operationRepeat() {
+    if(result==null) { return }
     calculation.push(result, operator, num2);
     result = doMath(calculation);
     calculation = [];

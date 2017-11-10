@@ -85,7 +85,7 @@ function handleNumber() {
 // Push the number and operator to the calculation array and display them on the DOM
 function handleOperator() {
     operator = $(this).val();
-    if ($('.displayLarge').text() === '') {
+    if ($('.displayLarge').text() == '') {
         calculation.pop();
         calculation.push(operator);
         $('.displaySmall').append(operator);
@@ -102,7 +102,7 @@ function handleOperator() {
 
 // Handle the calculation button, calculate the equation, and display the result on the DOM
 function handleCalculate() {
-    if ($('.displayLarge').text() === '') {
+    if ($('.displayLarge').text() == '') {
         if (calculation.length == 2) { operationRollOver() }
         if (calculation.length !== 0) { comprehensiveOperation() }
     } else {

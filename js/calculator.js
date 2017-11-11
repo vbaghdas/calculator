@@ -73,7 +73,9 @@ function doMath(array) {
 // Handle the value displayed on the DOM
 function handleNumber() {
     operand = parseFloat($(this).val());
-    if ($('.displayLarge').text()==0) { $('.displayLarge').text('')}
+    if ($('.displayLarge').text()==0 || $('.displayLarge').text()=='Ready' ){ 
+        $('.displayLarge').text('')
+    }
     //Check for repeating decimals
     if ( /\./.test($('.displayLarge').text()) && /\./.test($(this).val()) ) {
         return;

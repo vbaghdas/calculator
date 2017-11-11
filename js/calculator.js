@@ -191,7 +191,7 @@ function keydown() {
     if (input == 46 || input == 110 || input == 190) {
         $('.displayLarge').append(String.fromCharCode(46));
     } else if (input == 13) {
-        calculate();
+        handleCalculate();
     } else if (input == 8) {
         clear();
     } else if (input >= 48 && input <= 57) {

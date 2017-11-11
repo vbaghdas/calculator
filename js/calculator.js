@@ -7,6 +7,7 @@ function applyClickHandlers() {
     $('.calculator').on('click', '.calculate', handleCalculate);
     $('.calculator').on('click', '.clearEntry', clearEntry);
     $('.calculator').on('click', '.clear', clear);
+    $('body').on('keypress', keypress);
     $('body').on('keydown', keydown);
 }
 
@@ -32,6 +33,7 @@ function doMath(array) {
     for (var i = 0; i < array.length; i++) {
         if (isNaN(array[i])) {
             switch(array[i]) {
+                case '*':
                 case 'x':
                     item = array[i-1] * array[i+1];
                     i--;
@@ -71,8 +73,8 @@ function doMath(array) {
 }
 
 // Handle the value displayed on the DOM
-function handleNumber() {
-    operand = parseFloat($(this).val());
+function handleNumber(input) {
+    (typeof input == 'number') ? operand = input : operand = parseFloat($(this).val());
     if ($('.displayLarge').text()==0 || $('.displayLarge').text()=='Ready' ){ 
         $('.displayLarge').text('')
     }
@@ -80,13 +82,13 @@ function handleNumber() {
     if ( /\./.test($('.displayLarge').text()) && /\./.test($(this).val()) ) {
         return;
     } else {
-        $('.displayLarge').append($(this).val()); 
+        $('.displayLarge').append(operand); 
     }
 }
 
 // Push the number and operator to the calculation array and display them on the DOM
-function handleOperator() {
-    operator = $(this).val();
+function handleOperator(input) {
+    (typeof input == 'number') ? operator = String.fromCharCode(input) : operator = $(this).val();
     if ($('.displayLarge').text() == '') {
         calculation.pop();
         calculation.push(operator);
@@ -185,17 +187,27 @@ function clear() {
     result = null;
 }
 
-// Handle keys pressed on the keyboard and display them on the DOM
+// Handle clear input on keydown
 function keydown() {
     var input = event.which || event.keyCode;
-    if (input == 46 || input == 110 || input == 190) {
-        $('.displayLarge').append(String.fromCharCode(46));
-    } else if (input == 13) {
-        handleCalculate();
-    } else if (input == 8) {
+    if (input == 8) {
         clear();
-    } else if (input >= 48 && input <= 57) {
-        if ($('.displayLarge').text()==0) { $('.displayLarge').text('')}
-        $('.displayLarge').append(String.fromCharCode(input));
+    } 
+}
+
+// Handle operator input, calculate, and number input on keypress
+function keypress() {
+    var input = event.which || event.keyCode;
+    if (input == 42 || input == 43 || input == 45 || input == 47 || input == 120) {
+        handleOperator(input);
+    } else if (input == 13 || input == 61) {
+        handleCalculate();
+    } else if (input >= 48 && input <= 57 || input == 46) {
+        if ($('.displayLarge').text()==0) { 
+            $('.displayLarge').text('')
+        }
+        input = String.fromCharCode(input)
+        handleNumber(parseFloat(input));
     }
+    
 }

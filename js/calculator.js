@@ -209,5 +209,4 @@ function keypress() {
         input = String.fromCharCode(input)
         handleNumber(parseFloat(input));
     }
-    
 }

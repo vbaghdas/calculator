@@ -1,6 +1,6 @@
 # CALCULATOR
 
-## Technologies: HTML5, CSS3, JavaScript, jQuery
+## Technologies: HTML5, CSS3, JavaScript, jQuery, Bootstrap
 
 #### Description
 

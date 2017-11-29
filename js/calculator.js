@@ -74,9 +74,9 @@ function doMath(array) {
 
 // Handle the value displayed on the DOM
 function handleNumber(input) {
-    (typeof input == 'number') ? operand = input : operand = parseFloat($(this).val());
-    if ($('.displayLarge').text()==0 || $('.displayLarge').text()=='Ready' ){ 
-        $('.displayLarge').text('')
+    (typeof input == 'number' || /\./.test(input) ) ? operand = input : operand = $(this).val();
+    if ($('.displayLarge').text()==0 || $('.displayLarge').text()=='Ready') { 
+        $('.displayLarge').text('');
     }
     //Check for repeating decimals
     if ( /\./.test($('.displayLarge').text()) && /\./.test($(this).val()) ) {
@@ -202,11 +202,14 @@ function keypress() {
         handleOperator(input);
     } else if (input == 13 || input == 61) {
         handleCalculate();
-    } else if (input >= 48 && input <= 57 || input == 46) {
+    } else if (input >= 48 && input <= 57) {
         if ($('.displayLarge').text()==0) { 
             $('.displayLarge').text('')
         }
-        input = String.fromCharCode(input)
+        input = String.fromCharCode(input);
         handleNumber(parseFloat(input));
+    } else if (input == 46){
+        input = String.fromCharCode(input);
+        handleNumber(input);
     }
 }

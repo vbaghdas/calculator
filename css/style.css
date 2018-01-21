@@ -61,6 +61,9 @@ button:hover {
 button:active {
     top: 1px;
 }
+button:focus {
+    outline:0;
+}
 button.operator {
     color: #BBB;
     background: #222;
